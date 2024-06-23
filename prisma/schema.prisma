@@ -64,7 +64,7 @@ model Chapter {
   position    Int
   isPublished Boolean  @default(false)
   isFree      Boolean  @default(false)
-  difficulty  String
+  // difficulty  String?  @db.String
   solution    String[]
 
   muxData MuxData?
