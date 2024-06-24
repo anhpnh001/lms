@@ -24,7 +24,7 @@ export const columns: ColumnDef<Course>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Title
+          Tiêu đề
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -38,7 +38,7 @@ export const columns: ColumnDef<Course>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Price
+          Giá
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -57,7 +57,7 @@ export const columns: ColumnDef<Course>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Published
+          Trạng thái
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )

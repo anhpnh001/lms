@@ -58,7 +58,7 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center py-4 justify-between">
         <Input
-          placeholder="Filter courses..."
+          placeholder="Lọc khoá học..."
           value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
             table.getColumn('title')?.setFilterValue(event.target.value)
@@ -115,7 +115,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Không có kết quả.
                 </TableCell>
               </TableRow>
             )}
@@ -129,7 +129,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Trước
         </Button>
         <Button
           variant="outline"
@@ -137,7 +137,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Sau
         </Button>
       </div>
     </div>
