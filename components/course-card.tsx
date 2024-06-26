@@ -57,7 +57,7 @@ overflow-hidden"
           {progress !== null ? (
             <div>TODO: Progress component</div>
           ) : (
-            <p className="text-md md: text-sm font-medium text-slate-700">
+            <p className="text-md md:text-sm font-medium text-slate-700">
               {formatPrice(price)}
             </p>
           )}

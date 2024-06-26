@@ -21,7 +21,7 @@ export const getCourses = async ({
   try {
     const courses = await db.course.findMany({
       where: {
-        // TODO: Uncomment this line when the course is published
+        // TODO: Uncomment the following line
         // isPublished: true,
         title: {
           contains: title,
@@ -32,7 +32,7 @@ export const getCourses = async ({
         category: true,
         chapters: {
           where: {
-            // TODO: Uncomment this line when the chapter is published
+            // TODO: Uncomment the following line
             // isPublished: true,
           },
           select: {
