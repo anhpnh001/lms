@@ -32,7 +32,8 @@ export const getCourses = async ({
         category: true,
         chapters: {
           where: {
-            isPublished: true,
+            // TODO: Uncomment this line when the chapter is published
+            // isPublished: true,
           },
           select: {
             id: true,
