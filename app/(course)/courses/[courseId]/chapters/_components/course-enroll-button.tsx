@@ -11,7 +11,7 @@ export default function CourseEnrollButton({
   courseId,
 }: CourseEnrollButtonProps) {
   return (
-    <Button size="sm" className="w-full md:w-auto">
+    <Button className="w-full md:w-auto">
       Đăng ký học với {formatPrice(price)}
     </Button>
   )
