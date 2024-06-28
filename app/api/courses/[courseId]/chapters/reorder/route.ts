@@ -9,7 +9,7 @@ export async function PUT(
     const { userId } = auth()
 
     if (!userId) {
-      console.log(' [REORDER] Unauthorized')
+      console.log('[REORDER] Unauthorized')
       return new NextResponse('Unauthorized', { status: 401 })
     }
     const { list } = await req.json()
@@ -22,7 +22,7 @@ export async function PUT(
     console.log(params.courseId)
 
     if (!ownCourse) {
-      console.log(' [REORDER] Unauthorized 2')
+      console.log('[REORDER] Unauthorized 2')
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
@@ -34,7 +34,7 @@ export async function PUT(
     }
     return new NextResponse('Success', { status: 200 })
   } catch (error) {
-    console.log(' [REORDER]', error)
+    console.log('[REORDER]', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }

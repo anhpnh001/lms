@@ -35,12 +35,12 @@ export default async function CourseSidebar({
     <div className="h-full border-r flex flex-col overflow-y-auto shadow-sm">
       <div className="p-8 flex flex-col border-b">
         <h1 className="font-semibold">{course.title}</h1>
-        {/* TODO: Uncomment the following line */}
-        {/* {purchase && ( */}
-        <div className="mt-10">
-          <CourseProgress variant="success" value={progressCount} />
-        </div>
-        {/* )} */}
+        {/* TODO: Uncomment this line after implementing course publish feature */}
+        {purchase && (
+          <div className="mt-10">
+            <CourseProgress variant="success" value={progressCount} />
+          </div>
+        )}
       </div>
       <div className="flex flex-col w-full">
         {course.chapters.map((chapter) => (

@@ -24,7 +24,7 @@ export default async function CourseLayout({
     include: {
       chapters: {
         where: {
-          // TODO: Uncomment the following line
+          // TODO: Uncomment this line after implementing course publish feature
           // isPublished: true,
         },
         include: {

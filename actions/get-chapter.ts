@@ -23,7 +23,7 @@ export const getChapter = async ({
 
     const course = await db.course.findUnique({
       where: {
-        // TODO: Uncomment the following line
+        // TODO: Uncomment this line after implementing course publish feature
         // isPublished: true,
         id: courseId,
       },
@@ -35,7 +35,7 @@ export const getChapter = async ({
     const chapter = await db.chapter.findUnique({
       where: {
         id: chapterId,
-        // TODO: Uncomment the following line
+        // TODO: Uncomment this line after implementing course publish feature
         // isPublished: true,
       },
     })
@@ -65,7 +65,7 @@ export const getChapter = async ({
       nextChapter = await db.chapter.findFirst({
         where: {
           courseId: courseId,
-          //   TODO: Uncomment the following line
+          //   TODO: Uncomment this line after implementing course publish feature
           //   isPublished: true,
           position: {
             gt: chapter?.position,
@@ -95,7 +95,7 @@ export const getChapter = async ({
       purchase,
     }
   } catch (error) {
-    console.log(' [GET_CHAPTER]', error)
+    console.log('[GET_CHAPTER]', error)
     return {
       chapter: null,
       course: null,

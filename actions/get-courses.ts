@@ -21,7 +21,7 @@ export const getCourses = async ({
   try {
     const courses = await db.course.findMany({
       where: {
-        // TODO: Uncomment the following line
+        // TODO: Uncomment this line after implementing course publish feature
         // isPublished: true,
         title: {
           contains: title,
@@ -32,7 +32,7 @@ export const getCourses = async ({
         category: true,
         chapters: {
           where: {
-            // TODO: Uncomment the following line
+            // TODO: Uncomment this line after implementing course publish feature
             // isPublished: true,
           },
           select: {
@@ -70,7 +70,7 @@ export const getCourses = async ({
 
     return coursesWithProgress
   } catch (error) {
-    console.log(' [GET_COURSES]', error)
+    console.log('[GET_COURSES]', error)
     return []
   }
 }

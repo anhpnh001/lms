@@ -7,7 +7,7 @@ export const getProgress = async (
     const publishedChapters = await db.chapter.findMany({
       where: {
         courseId: courseId,
-        // TODO: Uncomment the following line
+        // TODO: Uncomment this line after implementing course publish feature
         // isPublished: true,
       },
       select: {
@@ -31,7 +31,7 @@ export const getProgress = async (
       (validCompletedChapters / publishedChapterIds.length) * 100
     return progressPercentage
   } catch (error) {
-    console.log(' [GET_PROGRESS]', error)
+    console.log('[GET_PROGRESS]', error)
     return 0
   }
 }
