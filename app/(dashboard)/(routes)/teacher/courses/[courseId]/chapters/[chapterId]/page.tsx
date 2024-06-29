@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation'
 import ChapterTitleForm from './_components/chapter-title-form'
 import ChapterDescriptionForm from './_components/chapter-description-form'
 import ChapterAccessForm from './_components/chapter-access-form'
+import { ChapterActions } from './_components/chapter-action'
 
 export default async function ChapterIdPage({
   params,
@@ -66,6 +67,12 @@ export default async function ChapterIdPage({
                   Hoàn thành tất cả các trường {completionText}
                 </span>
               </div>
+              <ChapterActions
+                disabled={!isComplete}
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+                isPublished={chapter.isPublished}
+              />
             </div>
           </div>
         </div>
