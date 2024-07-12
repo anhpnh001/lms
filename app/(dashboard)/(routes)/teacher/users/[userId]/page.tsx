@@ -62,8 +62,8 @@ export default async function CourseIdPage({
               <IconBadge variant="success" icon={LayoutDashboard} />
               <h2 className="text-xl">Tinh chỉnh người dùng</h2>
             </div>
-            <FirstNameForm initialData={user} userId={user.id} />
-            <LastNameForm initialData={user} userId={user.id} />
+            <FirstNameForm initialData={{ firstName: user.firstName || '' }} userId={user.id} />
+            <LastNameForm initialData={{ lastName: user.lastName || '' }} userId={user.id} />
             <RoleForm
               initialData={user}
               userId={user.id}
