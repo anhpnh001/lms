@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator'
 import { Preview } from '@/components/preview'
 import { File } from 'lucide-react'
 import { CourseProgressButton } from '../_components/course-progress-button'
+import BlocklyComponent from '@/components/BlocklyComponent'
 
 export default async function ChapterIdPage({
   params,
@@ -40,7 +41,7 @@ export default async function ChapterIdPage({
   const isLocked = !chapter.isFree && !purchase
   const completeOnEnd = !!purchase && !userProgress?.isCompleted
   return (
-    <div>
+    <div className="flex-1 flex flex-col">
       {userProgress?.isCompleted && (
         <Banner variant="success" label="Bạn đã hoàn thành bài học này." />
       )}
@@ -50,8 +51,8 @@ export default async function ChapterIdPage({
           label="Bạn cần mua khóa học này để xem bài học này."
         />
       )}
-      <div className="flex flex-col max-w-4xl mx-auto pb-20">
-        <div>
+      <div className="flex flex-col w-full max-w-4xl mx-auto pb-20 flex-1">
+        <div className="h-full">
           <div className="p-4 flex flex-col md:flex-row items-center justify-between">
             <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
             {/* TODO: Complete enroll functionality */}
@@ -91,6 +92,8 @@ export default async function ChapterIdPage({
               </div>
             </>
           )}
+
+          <BlocklyComponent />
         </div>
       </div>
     </div>

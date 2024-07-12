@@ -1,5 +1,5 @@
 import { db } from '@/lib/db'
-import { isTeacher } from '@/lib/teacher'
+import { isTeacher } from '@/lib/role'
 import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 export async function POST(req: Request) {
