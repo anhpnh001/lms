@@ -3,11 +3,12 @@ import { columns } from './_components/columns'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
+import axios from 'axios'
 
 export default async function CoursesPage() {
   const { userId } = auth()
   if (!userId) return redirect('/')
-  const courses = await db.course.findMany({
+  let courses = await db.course.findMany({
     where: {
       userId,
     },
@@ -15,6 +16,21 @@ export default async function CoursesPage() {
       createdAt: 'desc',
     },
   })
+
+  const user = await db.user.findUnique({
+    where: {
+      clerkId: userId,
+    },
+  })
+
+  if (user?.roleName === 'Admin') {
+    courses = await db.course.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+  }
+
   return (
     <div className="p-6">
       <DataTable columns={columns} data={courses} />

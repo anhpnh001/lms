@@ -6,14 +6,14 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 const guestRoutes = [
   {
-    icon: Layout,
-    label: 'Bảng điều khiển',
+    icon: Compass,
+    label: 'Tìm kiếm',
     href: '/',
   },
   {
-    icon: Compass,
-    label: 'Tìm kiếm',
-    href: '/search',
+    icon: Layout,
+    label: 'Bảng điều khiển',
+    href: '/dashboard',
   },
   {
     icon: BarChart,
