@@ -59,18 +59,16 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center py-4 justify-between">
         <Input
           placeholder="Lọc..."
-          value={
-            (table.getColumn('fullName')?.getFilterValue() as string) ?? ''
-          }
+          value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
-            table.getColumn('fullName')?.setFilterValue(event.target.value)
+            table.getColumn('title')?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
-        <Link href="/sign-up">
+        <Link href="/search">
           <Button>
             <PlusCircle className="h-4 w-4 mr-2" />
-            Tạo người dùng
+            Đăng ký khoá học
           </Button>
         </Link>
       </div>

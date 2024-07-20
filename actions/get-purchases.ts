@@ -16,13 +16,12 @@ const groupByCourse = (purchases: PurchaseWithCourse[]) => {
   return grouped
 }
 
-export const getAnalytics = async (userId: string) => {
+export const getPurchases = async (userId: string) => {
   try {
+    // get purchases
     const purchases = await db.purchase.findMany({
       where: {
-        course: {
-          userId: userId,
-        },
+        userId: userId,
       },
       include: {
         course: true,

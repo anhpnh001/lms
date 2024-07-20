@@ -1,16 +1,25 @@
-import { isTeacher } from '@/lib/role'
-import { auth } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation'
+'use client'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function TeacherLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const { userId } = auth()
-  if (!isTeacher(userId)) {
-    return redirect('/')
+  const router = useRouter()
+  const authorize = async () => {
+    const response = await axios.get('/api/auth/authorize')
+    const { role } = response.data
+    if (role !== 'Teacher' && role !== 'Admin') {
+      router.push('/')
+    }
   }
+
+  useEffect(() => {
+    authorize()
+  }, [])
 
   return <>{children}</>
 }

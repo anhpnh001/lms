@@ -38,7 +38,10 @@ export default async function CourseSidebar({
         {/* TODO: Uncomment this line after implementing course publish feature */}
         {purchase && (
           <div className="mt-10">
-            <CourseProgress variant="success" value={progressCount} />
+            <CourseProgress
+              variant={progressCount >= 100 ? 'success' : 'default'}
+              value={progressCount}
+            />
           </div>
         )}
       </div>

@@ -1,14 +1,17 @@
 'use client'
 import { UserButton, useAuth } from '@clerk/nextjs'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { LogOut } from 'lucide-react'
 import SearchInput from '@/components/search-input'
 import { isTeacher } from '@/lib/role'
 import Chat from '@/components/chat'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 export function NavbarRoutes() {
+  const [isTeacherOrAdmin, setIsTeacherOrAdmin] = useState(false)
   const { userId } = useAuth()
   const pathname = usePathname()
 
@@ -17,6 +20,15 @@ export function NavbarRoutes() {
   const isSearchPage = pathname?.startsWith('/search')
   const isChapterPage =
     pathname?.startsWith('/courses') && pathname?.includes('/chapters')
+
+  const authorize = async () => {
+    const response = await axios.get('/api/auth/authorize')
+    const { role } = response.data
+    setIsTeacherOrAdmin(role === 'Teacher' || role === 'Admin')
+  }
+  useEffect(() => {
+    authorize()
+  }, [])
   return (
     <>
       {isSearchPage && (
@@ -33,7 +45,7 @@ export function NavbarRoutes() {
               Thoát
             </Button>
           </Link>
-        ) : isTeacher(userId) ? (
+        ) : isTeacherOrAdmin ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
               Chế độ giáo viên
