@@ -96,7 +96,7 @@ export default async function ChapterIdPage({
             </>
           )}
 
-          <BlocklyComponent initialXml={chapter.expression} />
+          <BlocklyComponent initialXml={chapter.expression || ''} />
         </div>
       </div>
     </div>
