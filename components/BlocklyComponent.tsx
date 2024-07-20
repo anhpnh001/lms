@@ -2,7 +2,11 @@
 import * as Blockly from 'blockly'
 import React, { useRef, useEffect } from 'react'
 
-export default function BlocklyComponent() {
+export default function BlocklyComponent({
+  initialXml,
+}: {
+  initialXml?: string
+}) {
   const blocklyRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -336,11 +340,20 @@ export default function BlocklyComponent() {
         }
       })
 
+      if (initialXml) {
+        try {
+          const xml = Blockly.utils.xml.textToDom(initialXml)
+          Blockly.Xml.domToWorkspace(xml, workspace)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
       return () => {
         workspace.dispose()
       }
     }
   }, [])
 
-  return <div ref={blocklyRef} style={{ height: '840px', width: '100%' }} />
+  return <div ref={blocklyRef} style={{ height: '360px', width: '100%' }} />
 }

@@ -10,6 +10,8 @@ import ChapterDescriptionForm from './_components/chapter-description-form'
 import ChapterAccessForm from './_components/chapter-access-form'
 import { ChapterActions } from './_components/chapter-actions'
 import BlocklyComponent from '@/components/BlocklyComponent'
+import ChapterExpressionBlocklyWorkspace from './_components/chapter-expression-blockly-workspace'
+import ChapterAnswerBlocklyWorkspace from './_components/chapter-answer-blockly-workspace'
 
 export default async function ChapterIdPage({
   params,
@@ -112,7 +114,16 @@ export default async function ChapterIdPage({
             </div>
           </div>
           <div>
-            <BlocklyComponent />
+            <ChapterExpressionBlocklyWorkspace
+              initialData={chapter}
+              courseId={params.courseId}
+              chapterId={params.chapterId}
+            />
+            <ChapterAnswerBlocklyWorkspace
+              initialData={chapter}
+              courseId={params.courseId}
+              chapterId={params.chapterId}
+            />
           </div>
         </div>
       </div>

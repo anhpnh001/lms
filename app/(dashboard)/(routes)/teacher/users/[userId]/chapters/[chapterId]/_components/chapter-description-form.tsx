@@ -85,7 +85,7 @@ export default function ChapterDescriptionForm({
             !initialData.description && 'text-slate-500 italic'
           )}
         >
-          {!initialData.description && 'No description'}
+          {!initialData.description && 'Không có mô tả'}
           {initialData.description && (
             <Preview value={initialData.description} />
           )}

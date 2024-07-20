@@ -85,15 +85,17 @@ model Attachment {
 }
 
 model Chapter {
-  id          String   @id @default(uuid()) @map("_id")
+  id          String  @id @default(uuid()) @map("_id")
   title       String
-  description String?  @db.String
-  videoUrl    String?  @db.String
+  description String? @db.String
+  videoUrl    String? @db.String
   position    Int
-  isPublished Boolean  @default(false)
-  isFree      Boolean  @default(false)
+  isPublished Boolean @default(false)
+  isFree      Boolean @default(false)
   // difficulty  String?  @db.String
-  solution    String[]
+  expression  String? @db.String
+  answer      String? @db.String
+  code        String? @db.String
 
   muxData MuxData?
 

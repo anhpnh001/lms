@@ -2,13 +2,15 @@ import { getChapter } from '@/actions/get-chapter'
 import Banner from '@/components/banner'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 import CourseEnrollButton from '../_components/course-enroll-button'
 import { Separator } from '@/components/ui/separator'
 import { Preview } from '@/components/preview'
 import { File } from 'lucide-react'
 import { CourseProgressButton } from '../_components/course-progress-button'
 import BlocklyComponent from '@/components/BlocklyComponent'
+import * as Blockly from 'blockly'
+import 'blockly/javascript'
 
 export default async function ChapterIdPage({
   params,
@@ -40,6 +42,7 @@ export default async function ChapterIdPage({
 
   const isLocked = !chapter.isFree && !purchase
   const completeOnEnd = !!purchase && !userProgress?.isCompleted
+  console.log('chapter', chapter.expression)
   return (
     <div className="flex-1 flex flex-col">
       {userProgress?.isCompleted && (
@@ -93,7 +96,7 @@ export default async function ChapterIdPage({
             </>
           )}
 
-          <BlocklyComponent />
+          <BlocklyComponent initialXml={chapter.expression} />
         </div>
       </div>
     </div>

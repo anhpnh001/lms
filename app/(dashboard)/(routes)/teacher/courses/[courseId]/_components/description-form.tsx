@@ -80,7 +80,7 @@ export default function DescriptionForm({
             !initialData.description && 'text-slate-500 italic'
           )}
         >
-          {initialData.description || 'No description'}
+          {initialData.description || 'Không có mô tả'}
         </p>
       )}
       {isEditing && (

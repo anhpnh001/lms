@@ -77,7 +77,7 @@ export default function PriceForm({ initialData, courseId }: PriceFormProps) {
             !initialData.price && 'text-slate-500 italic'
           )}
         >
-          {initialData.price ? formatPrice(initialData.price) : 'No price'}
+          {initialData.price ? formatPrice(initialData.price) : 'Không có giá'}
         </p>
       )}
       {isEditing && (
