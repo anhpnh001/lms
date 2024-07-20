@@ -1,7 +1,7 @@
 import { getChapter } from '@/actions/get-chapter'
 import Banner from '@/components/banner'
 import { auth } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import CourseEnrollButton from '../_components/course-enroll-button'
 import { Separator } from '@/components/ui/separator'
@@ -11,6 +11,9 @@ import { CourseProgressButton } from '../_components/course-progress-button'
 import BlocklyComponent from '@/components/BlocklyComponent'
 import * as Blockly from 'blockly'
 import 'blockly/javascript'
+import * as JsGenerator from 'blockly/javascript'
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 export default async function ChapterIdPage({
   params,
@@ -22,6 +25,8 @@ export default async function ChapterIdPage({
     return redirect('/')
   }
 
+  const { chapterId, courseId } = params
+
   const {
     chapter,
     course,
@@ -32,12 +37,41 @@ export default async function ChapterIdPage({
     purchase,
   } = await getChapter({
     userId,
-    chapterId: params.chapterId,
-    courseId: params.courseId,
+    chapterId,
+    courseId,
   })
 
   if (!chapter || !course) {
     return redirect('/')
+  }
+
+  const onClick = async () => {
+    try {
+      const workspace = Blockly.getMainWorkspace()
+      const xml = Blockly.Xml.workspaceToDom(workspace)
+      const answer = Blockly.Xml.domToText(xml)
+      const code = JsGenerator.javascriptGenerator.workspaceToCode(workspace)
+
+      if (code !== chapter.code) return toast.error('Đáp án không chính xác')
+      await axios.put(
+        `/api/courses/${courseId}/chapters/${chapterId}/progress`,
+        {
+          isCompleted: true,
+        }
+      )
+
+      const nextChapterId = nextChapter?.id
+      const isCompleted = !!userProgress?.isCompleted
+
+      if (!isCompleted && nextChapterId) {
+        redirect(`/courses/${params}/chapters/${nextChapterId}`)
+      }
+
+      toast.success('Tiến độ đã được cập nhật')
+    } catch {
+      toast.error('Tiến độ không thể cập nhật')
+    } finally {
+    }
   }
 
   const isLocked = !chapter.isFree && !purchase
@@ -61,16 +95,14 @@ export default async function ChapterIdPage({
             {/* TODO: Complete enroll functionality */}
             {purchase ? (
               <CourseProgressButton
-                chapterId={params.chapterId}
-                courseId={params.courseId}
+                chapterId={chapterId}
+                courseId={courseId}
                 nextChapterId={nextChapter?.id}
                 isCompleted={!!userProgress?.isCompleted}
+                chapterCode={chapter.code || ''}
               />
             ) : (
-              <CourseEnrollButton
-                courseId={params.courseId}
-                price={course.price!}
-              />
+              <CourseEnrollButton courseId={courseId} price={course.price!} />
             )}
           </div>
           <Separator />

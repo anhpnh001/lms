@@ -45,7 +45,6 @@ export default async function CourseIdPage({
 
   const requireFields = [
     course.title,
-    course.description,
     course.imageURL,
     course.price || course.price === 0,
     // TODO: Uncomment when categories are implemented
