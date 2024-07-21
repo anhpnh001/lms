@@ -118,7 +118,7 @@ export default function ChapterAnswerBlocklyWorkspace({
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-4 mt-4"
+              className="space-y-4 mt-4 z-0"
             >
               <BlocklyComponent initialXml={initialData.answer || ''} />
               <div className="flex items-center gap-x-2">

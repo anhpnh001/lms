@@ -88,6 +88,37 @@ export const columns: ColumnDef<any>[] = [
     },
   },
   {
+    accessorKey: 'updatedAt',
+    id: 'updatedAt',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Lần học gần nhất
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ getValue }) => {
+      // If the date more than 10 hour ago, badge it as 'destructive' with tooltip
+      const date = getValue() as Date
+      // return date.toLocaleString()
+      return (
+        <Badge
+          variant={
+            date.getTime() < Date.now() - 7 * 24 * 60 * 60 * 1000
+              ? 'destructive'
+              : 'default'
+          }
+        >
+          {date.toLocaleString()}
+        </Badge>
+      )
+    },
+  },
+  {
     accessorKey: 'progress',
     id: 'progress',
     header: ({ column }) => {
