@@ -73,11 +73,13 @@ export const CourseProgressButton = ({
             isCompleted: false,
           }
         )
+
       if (code !== chapterCode) return toast.error('Đáp án không chính xác')
+
       await axios.put(
         `/api/courses/${courseId}/chapters/${chapterId}/progress`,
         {
-          isCompleted: !isCompleted,
+          isCompleted: true,
         }
       )
 

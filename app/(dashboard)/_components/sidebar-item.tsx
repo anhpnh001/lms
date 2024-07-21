@@ -8,12 +8,14 @@ interface SidebarItemProps {
   icon: LucideIcon
   label: string
   href: string
+  id?: string
 }
 
 export default function SidebarItem({
   icon: Icon,
   label,
   href,
+  id,
 }: SidebarItemProps) {
   const pathname = usePathname()
   const route = useRouter()
@@ -28,6 +30,7 @@ export default function SidebarItem({
   }
   return (
     <button
+      id={id}
       onClick={onClick}
       className={cn(
         'flex items-center gap-x-2 text-slate-500 text-sm font-[500] pl-6 transition-all hover:hover:text-slate-600 hover:bg-slate-300/20',

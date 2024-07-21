@@ -78,7 +78,7 @@ export default async function ChapterIdPage({
   const completeOnEnd = !!purchase && !userProgress?.isCompleted
   console.log('chapter', chapter.expression)
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 flex flex-col px-4">
       {userProgress?.isCompleted && (
         <Banner variant="success" label="Bạn đã hoàn thành bài học này." />
       )}
@@ -89,7 +89,7 @@ export default async function ChapterIdPage({
         />
       )}
       <div className="flex flex-col w-full max-w-4xl mx-auto pb-20 flex-1">
-        <div className="h-full">
+        <div className="h-full z-0">
           <div className="p-4 flex flex-col md:flex-row items-center justify-between">
             <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
             {/* TODO: Complete enroll functionality */}

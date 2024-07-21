@@ -63,16 +63,13 @@ export const columns: ColumnDef<User>[] = [
       let colorClass = ''
       switch (role) {
         case 'Student':
-          colorClass = 'bg-green-500 text-white'
+          colorClass = 'bg-gray-500 text-white'
           break
-        case 'Lecturer':
+        case 'Teacher':
           colorClass = 'bg-blue-500 text-white'
           break
         case 'Admin':
-          colorClass = 'bg-red-500 text-white'
-          break
-        default:
-          colorClass = 'bg-gray-500 text-white'
+          colorClass = 'bg-green-500 text-white'
           break
       }
       return <Badge className={cn(colorClass)}>{role}</Badge>

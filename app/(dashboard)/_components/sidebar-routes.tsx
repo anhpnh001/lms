@@ -9,16 +9,19 @@ const guestRoutes = [
     icon: Compass,
     label: 'Tìm kiếm',
     href: '/',
+    id: 'step-1',
   },
   {
     icon: Layout,
     label: 'Bảng điều khiển',
     href: '/dashboard',
+    id: 'step-3',
   },
   {
     icon: BarChart,
     label: 'Phụ huynh',
     href: '/parent',
+    id: 'step-4',
   },
 ]
 
@@ -27,16 +30,19 @@ const teacherRoutes = [
     icon: List,
     label: 'Khóa học',
     href: '/teacher/courses',
+    id: '',
   },
   {
     icon: BarChart,
     label: 'Phân tích',
     href: '/teacher/analytics',
+    id: '',
   },
   {
     icon: User,
     label: 'Người dùng',
     href: '/teacher/users',
+    id: '',
   },
 ]
 
@@ -74,6 +80,7 @@ export const SidebarRoutes = () => {
               icon={route.icon}
               label={route.label}
               href={route.href}
+              id={route.id}
             />
           )
       )}

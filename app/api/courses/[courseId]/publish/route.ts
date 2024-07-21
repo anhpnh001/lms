@@ -30,7 +30,7 @@ export async function PATCH(
 
     if (
       !course.title ||
-      !course.description ||
+      // !course.description ||
       !course.imageURL
       //   || !course.categoryId
       //   || !hasPublishedChapter
