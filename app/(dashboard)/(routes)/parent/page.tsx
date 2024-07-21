@@ -39,7 +39,10 @@ export default async function AnalyticsPage() {
     },
   })
 
-  const lastChapterCompleted = progresses[0].updatedAt
+  let lastChapterCompleted = null
+  if (progresses.length > 0) {
+    lastChapterCompleted = progresses[0].updatedAt
+  }
 
   const users = await db.user.findMany({
     where: {
@@ -52,7 +55,6 @@ export default async function AnalyticsPage() {
   const progressCounts = await Promise.all(
     purchases.map((purchase) => getProgress(userId, purchase.courseId))
   )
-  console.log(progresses)
 
   const orders = purchases.map((purchase, index) => {
     const course = courses.find((course) => course.id === purchase.courseId)
@@ -62,7 +64,7 @@ export default async function AnalyticsPage() {
       course,
       user,
       progress: progressCounts[index],
-      updatedAt: progresses[index].updatedAt,
+      updatedAt: lastChapterCompleted,
     }
   })
 

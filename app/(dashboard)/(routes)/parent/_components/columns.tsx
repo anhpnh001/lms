@@ -108,12 +108,14 @@ export const columns: ColumnDef<any>[] = [
       return (
         <Badge
           variant={
-            date.getTime() < Date.now() - 7 * 24 * 60 * 60 * 1000
-              ? 'destructive'
-              : 'default'
+            date
+              ? date.getTime() < Date.now() - 7 * 24 * 60 * 60 * 1000
+                ? 'destructive'
+                : 'default'
+              : 'outline'
           }
         >
-          {date.toLocaleString()}
+          {date ? date.toLocaleString() : 'Chưa học'}
         </Badge>
       )
     },
