@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { LogOut } from 'lucide-react'
 import SearchInput from '@/components/search-input'
 import { isTeacher } from '@/lib/role'
-import Chat from '@/components/chat'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
@@ -17,7 +16,7 @@ export function NavbarRoutes() {
 
   const isTeacherPage = pathname?.startsWith('/teacher')
   const isCoursePage = pathname?.startsWith('/courses')
-  const isSearchPage = pathname?.startsWith('/search')
+  const isHomePage = pathname === '/' || pathname?.startsWith('/dashboard')
   const isChapterPage =
     pathname?.startsWith('/courses') && pathname?.includes('/chapters')
 
@@ -31,13 +30,12 @@ export function NavbarRoutes() {
   }, [])
   return (
     <>
-      {isSearchPage && (
+      {isHomePage && (
         <div className="hidden md:block">
           <SearchInput />
         </div>
       )}
       <div className="flex gap-x-2 ml-auto">
-        {isChapterPage && <Chat />}
         {isTeacherPage || isCoursePage ? (
           <Link href="/">
             <Button type="button" variant="ghost">

@@ -1,5 +1,12 @@
 'use client'
-import { BarChart, Compass, Layout, List, User } from 'lucide-react'
+import {
+  BarChart,
+  Compass,
+  Layout,
+  List,
+  MessageCircle,
+  User,
+} from 'lucide-react'
 import SidebarItem from './sidebar-item'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -22,6 +29,12 @@ const guestRoutes = [
     label: 'Phụ huynh',
     href: '/parent',
     id: 'step-4',
+  },
+  {
+    icon: MessageCircle,
+    label: 'Cộng đồng',
+    href: '/chat',
+    id: '',
   },
 ]
 
