@@ -94,7 +94,6 @@ export interface Message {
   // name: string;
   userId?: string
   text: string
-  createdAt: any
 }
 
 export interface User {
