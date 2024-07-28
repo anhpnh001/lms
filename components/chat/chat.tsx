@@ -17,7 +17,7 @@ export function Chat({ messages, selectedUser, isMobile }: ChatProps) {
     try {
       fetch('/api/messages', {
         method: 'POST',
-        body: JSON.stringify({ text: newMessage.message }),
+        body: JSON.stringify({ text: newMessage.text }),
       })
     } catch (error) {
       console.log('Error sending message', error)

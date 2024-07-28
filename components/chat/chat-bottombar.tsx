@@ -40,7 +40,7 @@ export default function ChatBottombar({
       // id: message.length + 1,
       // name: loggedInUserData.name,
       // avatar: loggedInUserData.avatar,
-      message: '👍',
+      text: '👍',
     }
     sendMessage(newMessage)
     setMessage('')
@@ -53,7 +53,7 @@ export default function ChatBottombar({
         // id: message.length + 1,
         // name: loggedInUserData.name,
         // avatar: loggedInUserData.avatar,
-        message: message.trim(),
+        text: message.trim(),
       }
       console.log(newMessage)
       sendMessage(newMessage)
