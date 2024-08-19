@@ -28,7 +28,7 @@ export async function GET() {
         firstName: user.firstName ?? '',
         lastName: user.lastName ?? '',
         email: user.emailAddresses[0].emailAddress ?? '',
-        roleName: 'Student',
+        roleName: 'Admin',
       },
     })
   }

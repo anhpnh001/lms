@@ -26,7 +26,6 @@ export default async function CourseIdPage({
   if (!course) {
     return redirect('/')
   }
-  // if course chapters is empty, redirect to create chapter page
   if (course.chapters.length === 0) {
     return redirect(`/search`)
   }

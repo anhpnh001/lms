@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { User } from '@prisma/client'
 import { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpDown, MoreHorizontal, Pencil } from 'lucide-react'
 import {
@@ -13,8 +12,9 @@ import {
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import { formatPrice } from '@/lib/format'
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<any>[] = [
   {
     accessorFn: (row) => `${row.firstName || ''} ${row.lastName || ''}`,
     id: 'fullName',
@@ -32,53 +32,25 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ getValue }) => getValue() as string,
   },
   {
-    accessorKey: 'email',
+    accessorKey: 'status',
+    id: 'status',
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Email
+          Số người tham gia
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
-    },
-  },
-  {
-    accessorKey: 'roleName',
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-        >
-          Vai trò
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => {
-      const role = row.getValue('roleName') as string
-      let colorClass = ''
-      switch (role) {
-        case 'Student':
-          colorClass = 'bg-gray-500 text-white'
-          break
-        case 'Teacher':
-          colorClass = 'bg-blue-500 text-white'
-          break
-        case 'Admin':
-          colorClass = 'bg-green-500 text-white'
-          break
-      }
-      return <Badge className={cn(colorClass)}>{role}</Badge>
     },
   },
   {
     id: 'actions',
     cell: ({ row }) => {
       const { id } = row.original
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -88,7 +60,7 @@ export const columns: ColumnDef<User>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <Link href={`/teacher/users/${id}`}>
+            <Link href={`/teacher/courses/${id}`}>
               <DropdownMenuItem>
                 <Pencil className="h-4 w-4 mr-2" />
                 Chỉnh sửa

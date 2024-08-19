@@ -24,8 +24,15 @@ export const CourseCard = ({
   progress,
   category,
 }: CourseCardProps) => {
+  console.log(category)
+  const href =
+    category === 'Khóa học'
+      ? `/courses/${id}`
+      : category === 'Luyện thi'
+      ? `/exams/${id}`
+      : `/competitions/${id}`
   return (
-    <Link href={`/courses/${id}`}>
+    <Link href={href}>
       <div className="group hover:shadow-sm transition overflow-hidden border rounded-1g p-3 h-full">
         <div
           className="relative w-full aspect-video rounded-md
