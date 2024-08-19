@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+/*import { db } from '@/lib/db'
 import { redirect } from 'next/navigation'
 import { DataTable } from './_components/data-table'
 import { columns } from './_components/columns'
@@ -67,3 +67,4 @@ export default async function CompetitionIdPage({
     </div>
   )
 }
+*/
