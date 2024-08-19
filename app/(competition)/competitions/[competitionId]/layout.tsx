@@ -1,4 +1,4 @@
-import { getProgress } from '@/actions/get-process'
+/*import { getProgress } from '@/actions/get-process'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import CourseSidebar from './_components/course-sidebar'
@@ -66,3 +66,4 @@ export default async function CompetitionLayout({
     </div>
   )
 }
+*/
